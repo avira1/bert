@@ -82,3 +82,26 @@ python medicare_news_digest.py --max-articles 5 --delivery both
 
 - The summarizer is intentionally simple and deterministic (first few substantial sentences).
 - You can swap in an LLM summarizer later if you want richer summaries.
+
+
+## Move this app into a separate repo (`medicare-news-`)
+
+If you want this app maintained in a dedicated repository named `medicare-news-`, use the export script:
+
+```bash
+cd /workspace/bert
+./apps/news_digest/scripts/export_to_medicare_news_repo.sh /workspace/medicare-news-
+```
+
+Then publish from the new repo:
+
+```bash
+cd /workspace/medicare-news-
+git add .
+git commit -m "Initial import from bert/apps/news_digest"
+git branch -M main
+git remote add origin <your-medicare-news--repo-url>
+git push -u origin main
+```
+
+This keeps `bert` as the source while giving you a clean standalone repo for deployment.
